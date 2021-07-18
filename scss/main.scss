@@ -69,29 +69,38 @@ html, body {
             height: 30px;
             position: absolute;
             bottom: 0;
+            transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
         }
         .sword1 {
             left: 0;
             background-image: url(../../assets/tiles/0x72_DungeonTilesetII_v1.3.1/0x72_DungeonTilesetII_v1.3.png);
             background-position: -340px -145px;
-            transform-origin: bottom right;
+            transform-origin: top left;
         }
         .sword2 {
             left: 50%;
             transform: translateX(-50%);
             background-image: url(../../assets/tiles/0x72_DungeonTilesetII_v1.3.1/0x72_DungeonTilesetII_v1.3.png);
             background-position: -340px -145px;
-            transform-origin: bottom right;
+            opacity: 1;
         }
         .sword3 {
             right: 0;
             background-image: url(../../assets/tiles/0x72_DungeonTilesetII_v1.3.1/0x72_DungeonTilesetII_v1.3.png);
             background-position: -340px -145px;
             transform-origin: top left;
-            transform: rotate(130deg) translate(139%, -44%);
         }
         &.open {
-            
+            transform: translate(-4px) rotate(90deg);
+            .sword1 {
+                transform: rotate(-130deg) translate(-259%, -36%);
+            }
+            .sword2 {
+                opacity: 0;
+            }
+            .sword3 {
+                transform: rotate(130deg) translate(139%, -44%);
+            }
         }
     }
     .navigation {
@@ -129,6 +138,7 @@ html, body {
     z-index: 6;
     &.fadeOut {
         opacity: 0;
+        pointer-events: none;
     }
 }
 .loaderBackgroundCanvas {
@@ -139,6 +149,7 @@ html, body {
     transition: opacity 0.3s;
     &.fadeOut {
         opacity: 0;
+        pointer-events: none;
     }
 }
 .loadWriting {
